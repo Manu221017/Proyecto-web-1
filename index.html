@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseBlog | CRUD con API REST</title>
+  <meta
+    name="description"
+    content="Aplicación web tipo blog con CRUD completo, filtros, paginación y estadísticas usando HTML, CSS y JavaScript."
+  >
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <a class="brand" href="#/">
+          <span class="brand__icon">PB</span>
+          <span class="brand__text">
+            <strong>PulseBlog</strong>
+            <small>Historias con CRUD real</small>
+          </span>
+        </a>
+        <p class="hero-copy">
+          Explora, crea, edita y elimina publicaciones consumiendo una API REST
+          desde JavaScript modular.
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#/" data-nav-link>Inicio</a>
+        <a href="#/create" data-nav-link>Crear publicación</a>
+        <a href="#/insights" data-nav-link>Insights</a>
+      </nav>
+    </header>
+
+    <main class="app-layout">
+      <aside class="sidebar-card">
+        <h1>Panel editorial</h1>
+        <p>
+          Administra contenido, aplica filtros combinables y revisa métricas de
+          actividad sin recargar la página.
+        </p>
+
+        <div class="sidebar-card__stats" id="quickStats">
+          <article>
+            <span>Publicaciones</span>
+            <strong id="statPosts">0</strong>
+          </article>
+          <article>
+            <span>Autores</span>
+            <strong id="statAuthors">0</strong>
+          </article>
+          <article>
+            <span>Favoritos</span>
+            <strong id="statFavorites">0</strong>
+          </article>
+        </div>
+
+        <section class="mini-help">
+          <h2>Funciones clave</h2>
+          <ul>
+            <li>CRUD completo con `GET`, `POST`, `PATCH` y `DELETE`.</li>
+            <li>Validación de formularios desde JavaScript.</li>
+            <li>Estados de carga, error, éxito y vacío.</li>
+            <li>Filtros por texto, autor y etiquetas.</li>
+          </ul>
+        </section>
+      </aside>
+
+      <section class="content-panel">
+        <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+        <div id="app"></div>
+      </section>
+    </main>
+  </div>
+
+  <template id="spinnerTemplate">
+    <section class="panel panel--centered" aria-live="polite">
+      <div class="spinner"></div>
+      <p>Cargando información...</p>
+    </section>
+  </template>
+
+  <template id="errorTemplate">
+    <section class="panel panel--centered">
+      <div class="state-badge state-badge--error">Error</div>
+      <h2>Algo salió mal</h2>
+      <p data-error-message></p>
+      <button class="btn btn--primary" data-retry-button>Intentar de nuevo</button>
+    </section>
+  </template>
+
+  <template id="emptyTemplate">
+    <section class="panel panel--centered">
+      <div class="state-badge">Sin resultados</div>
+      <h2>No encontramos publicaciones</h2>
+      <p data-empty-message></p>
+    </section>
+  </template>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
